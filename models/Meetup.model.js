@@ -22,7 +22,7 @@ const meetUpSchema = new Schema(
         required: true, 
       }
     ],
-    userId: {
+    userJoinerId: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
