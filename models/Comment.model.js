@@ -7,7 +7,7 @@ const movieSchema = new Schema({
   },
   MovieId: {
     type: Schema.Types.ObjectId,
-    ref: "Wine"
+    ref: "Movie"
   },
   userId: {
     type: Schema.Types.ObjectId,
