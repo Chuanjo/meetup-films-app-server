@@ -13,7 +13,7 @@ const meetUpSchema = new Schema(
     date: Date,
     movieId: { 
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Movie",
     },
     type: [
       {
