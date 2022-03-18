@@ -2,7 +2,7 @@ const router = require("express").Router();
 const isAuthenticated = require("../middleware/isAuthenticated")
 
 router.get("/", (req, res, next) => {
-  res.json("All good in here");
+  res.json("A por ella");
 });
 
 // You put the next routes here 👇
