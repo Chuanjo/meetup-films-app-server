@@ -40,7 +40,7 @@ router.post('/signup', async (req, res, next) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash( password, salt )
     
-    await UserModel.Create({
+    await UserModel.create({
       username, 
       email,
       password: hashedPassword,
@@ -75,8 +75,8 @@ router.post("/login", async (req, res, next) => {
     //Find User
     if (!foundUser) {
       res.status(401).json({ errorMessage: "User not found"})     
+      return;
     }
-    return;
   
     //Password validation
     const isPasswordCorrect = await bcrypt.compare( password, foundUser.password )
