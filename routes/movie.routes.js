@@ -1,17 +1,28 @@
 const router = require("express").Router();
-const axios = require("axios");
 const MovieModel = require("../models/Movie.model");
+const {moviesList, nowPlayingMovieList, nowPlayingMovieListId} = require("../service/apiService")
 
 router.get("/", async (req,res,next)=>{
     try {
-        // const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${MOVIES_API_KEY}`)
-        // res.json(response)
-        console.log("hello")
+        const response = await nowPlayingMovieList()
+        res.json(response.data)
+        
         
     } catch (error) {
         next(error)
     }
 })
+
+router.get("/:id", async (req, res, next) => {
+    const { id } = req.params
+    try {
+      const response = await nowPlayingMovieListId(id)
+      console.log(response.data.results)
+      res.json(response.data.results)
+    } catch(err) {
+      next(err)
+    }
+  })
 
 
 
