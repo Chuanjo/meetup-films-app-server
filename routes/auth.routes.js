@@ -20,7 +20,7 @@ router.post('/signin', async (req, res, next) => {
   //Password conditions
 
   if (!passwordRegexp.test(password)) {
-    res.render("auth/signup.hbs", {
+    res.status(400).json ({
       errorMessage:
         "Password has to be between 8 & 15, capitalize letter, lowercase letter, one digit and at least one special character",
     });
