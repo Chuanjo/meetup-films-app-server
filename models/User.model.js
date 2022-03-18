@@ -11,7 +11,7 @@ const userSchema = new Schema(
       unique: true,
     },
     password: String,
-    nickName: String,
+    nickname: String,
     city: String,
   },
   {
