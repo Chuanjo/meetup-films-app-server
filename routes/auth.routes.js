@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken");
 const sign = require("jsonwebtoken/sign");
 const UserModel = require("../models/User.model")
+const isAuthenticated = require("../middleware/isAuthenticated");
 
 //todo/ Sign up routes
 
