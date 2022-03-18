@@ -9,7 +9,7 @@ const isAuthenticated = require("../middleware/isAuthenticated");
 
 router.post('/signin', async (req, res, next) => {
   
-  const { email, password, username, city } = req.body;
+  const { email, password, username, city, nickname } = req.body;
   const passwordRegexp =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/;
 
@@ -20,7 +20,7 @@ router.post('/signin', async (req, res, next) => {
   //Password conditions
 
   if (!passwordRegexp.test(password)) {
-    res.status(400).json ({
+    res.render("auth/signup.hbs", {
       errorMessage:
         "Password has to be between 8 & 15, capitalize letter, lowercase letter, one digit and at least one special character",
     });
@@ -45,7 +45,7 @@ router.post('/signin', async (req, res, next) => {
       username, 
       email,
       password: hashedPassword,
-    //   nickname,
+      nickname,
       city,
     })
     
