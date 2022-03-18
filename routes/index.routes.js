@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const isAuthenticated = require("../middleware/isAuthenticated")
 
 router.get("/", (req, res, next) => {
   res.json("All good in here");
@@ -14,9 +15,9 @@ const movieRoutes = require("./movie.routes")
 router.use("/movie", movieRoutes)
 
 const meetupRoutes = require("./meetup.routes")
-router.use("/meetup", meetupRoutes)
+router.use("/meetup", isAuthenticated, meetupRoutes)
 
 const commentRoutes = require("./comment.routes")
-router.use("/comment", commentRoutes)
+router.use("/comment", isAuthenticated, commentRoutes)
 
 module.exports = router;
