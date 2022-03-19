@@ -16,7 +16,7 @@ const nowPlayingMovieList = () =>{
     return service.get("/movie/now_playing", {
         params: {
             api_key: process.env.API_KEY,
-            id
+            
         }
     })
 }
