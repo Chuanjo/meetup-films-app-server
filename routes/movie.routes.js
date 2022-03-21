@@ -12,7 +12,7 @@ router.get("/billboard/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
     const response = await nowPlayingMovieListId(id);
-    console.log(response.data);
+    // console.log(response.data);
     res.json(response.data);
   } catch (error) {
     next(error);
@@ -22,7 +22,7 @@ router.get("/billboard/:id", async (req, res, next) => {
 router.get("/billboard", async (req, res, next) => {
   try {
     const response = await nowPlayingMovieList();
-    console.log(response.data);
+    // console.log(response.data);
     res.json(response.data);
   } catch (error) {
     next(error);
@@ -32,7 +32,7 @@ router.get("/billboard", async (req, res, next) => {
 router.get("/", async (req, res, next) => {
   try {
     const response = await moviesGenreList();
-    console.log(response.data);
+    // console.log(response.data);
     res.json(response.data);
   } catch (error) {
     next(error);
@@ -43,7 +43,7 @@ router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
     const response = await moviesGenreListId(id);
-    console.log(response.data.results);
+    // console.log(response.data.results);
     res.json(response.data.results);
   } catch (err) {
     next(err);
