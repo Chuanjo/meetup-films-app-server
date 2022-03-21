@@ -18,5 +18,8 @@
         "titleBar.inactiveBackground": "#0e210599",
         "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.color": "#0e2105"
+    "peacock.color": "#0e2105",
+    "cSpell.words": [
+        "signin"
+    ]
 }
