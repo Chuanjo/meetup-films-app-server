@@ -9,12 +9,12 @@ const isAuthenticated = require("../middleware/isAuthenticated");
 
 router.post('/signin', async (req, res, next) => {
   
-  const { email, password, username, city, nickname } = req.body;
+  const { email, password, username, city, nickName } = req.body;
   const passwordRegexp =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/;
 
-  if (!email || !password || !username || !city || !nickname) {
-    res.status(400).json({ errorMessage: "Fields required" })
+  if (!email || !password || !username || !city || !nickName) {
+    res.status(400).json({ errorMessage: "Fields required 1234" })
     return;
   }
   //Password conditions
@@ -45,7 +45,7 @@ router.post('/signin', async (req, res, next) => {
       username, 
       email,
       password: hashedPassword,
-      nickname,
+      nickName,
       city,
     })
     
