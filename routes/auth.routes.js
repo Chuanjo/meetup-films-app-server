@@ -13,7 +13,7 @@ router.post('/signin', async (req, res, next) => {
   const passwordRegexp =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/;
 
-  if (!email || !password || !username || !city) {
+  if (!email || !password || !username || !city || !nickname) {
     res.status(400).json({ errorMessage: "Fields required" })
     return;
   }

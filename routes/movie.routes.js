@@ -4,8 +4,8 @@ const {
   
   nowPlayingMovieList,
   nowPlayingMovieListId,
-  moviesGenreList,
-  moviesGenreListId,
+  popularMovieList,
+  popularMovieListId,
 } = require("../service/apiService");
 
 router.get("/billboard/:id", async (req, res, next) => {
@@ -23,7 +23,7 @@ router.get("/billboard", async (req, res, next) => {
   try {
     const response = await nowPlayingMovieList();
     console.log(response.data);
-    res.json(response.data);
+    res.json(response.data.results);
   } catch (error) {
     next(error);
   }
@@ -31,7 +31,7 @@ router.get("/billboard", async (req, res, next) => {
 
 router.get("/", async (req, res, next) => {
   try {
-    const response = await moviesGenreList();
+    const response = await popularMovieList();
     console.log(response.data);
     res.json(response.data);
   } catch (error) {
@@ -42,7 +42,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
-    const response = await moviesGenreListId(id);
+    const response = await popularMovieListId(id);
     console.log(response.data.results);
     res.json(response.data.results);
   } catch (err) {

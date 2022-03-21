@@ -24,16 +24,16 @@ const nowPlayingMovieListId = async (id) => {
   return  res;
 };
 
-const moviesGenreList = () => {
-  return service.get("/genre/movie/list", {
+const popularMovieList = () => {
+  return service.get("/movie/popular", {
     params: {
       api_key: process.env.API_KEY,
     },
   });
 };
 
-const moviesGenreListId = async (id) => {
-  const res = await service.get("/movie/now_playing", {
+const popularMovieListId = async (id) => {
+  const res = await service.get("/movie/popular", {
     params: {
       api_key: process.env.API_KEY,
       id,
@@ -41,13 +41,13 @@ const moviesGenreListId = async (id) => {
   });
   return  res;
 };
-
+// movie/popular
 // "https://api.themoviedb.org/3/movie/now_playing?api_key=ef089baa2cdc4146ef1590cfa9cc45b1"
 // "https://api.themoviedb.org/3/genre/movie/list?api_key=ef089baa2cdc4146ef1590cfa9cc45b1"
 
 module.exports = {
-  moviesGenreList,
   nowPlayingMovieList,
   nowPlayingMovieListId,
-  moviesGenreListId,
+  popularMovieList,
+  popularMovieListId,
 };
