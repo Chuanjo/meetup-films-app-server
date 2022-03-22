@@ -5,11 +5,11 @@ const movieSchema = new Schema({
     type: String,
     required: true,
   },
-  movieId: {
+  movie: {
     type: Schema.Types.ObjectId,
     ref: "Movie"
   },
-  userId: {
+  user: {
     type: Schema.Types.ObjectId,
     ref: "User"
   }

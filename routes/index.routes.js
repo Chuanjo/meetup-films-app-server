@@ -20,4 +20,7 @@ router.use("/meetup", isAuthenticated, meetupRoutes)
 const commentRoutes = require("./comment.routes")
 router.use("/comment", isAuthenticated, commentRoutes)
 
+const commentRoutes = require("./user.routes")
+router.use("/user", isAuthenticated, userRoutes)
+
 module.exports = router;

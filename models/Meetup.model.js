@@ -4,12 +4,12 @@ const meetUpSchema = new Schema({
   title: String,
   city: String,
   description: String,
-  mainUserId: {
+  creator: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },
   date: Date,
-  movieId: {
+  movie: {
     type: Schema.Types.ObjectId,
     ref: "Movie",
   },
@@ -20,7 +20,7 @@ const meetUpSchema = new Schema({
       required: true,
     },
   ],
-  userId: [
+  participants: [
     {
       type: Schema.Types.ObjectId,
       ref: "User",
