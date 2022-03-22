@@ -54,8 +54,9 @@ router.post("/", isAuthenticated, async (req, res, next) => {
 //MeetUp edit
 
 router.get("/:id/edit", isAuthenticated, async (req, res, next) => {
+  const { _id } = req.payload;
   try {
-    const meetUpEdit = await MeetupModel.findById({ creator: _id });
+    const meetUpEdit = await MeetupModel.findById(_id);
     res.json(meetUpEdit);
   } catch (err) {
     next(err);
