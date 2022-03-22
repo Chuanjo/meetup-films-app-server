@@ -8,22 +8,22 @@ const {
   popularMovieListId,
 } = require("../service/apiService");
 
+router.get("/billboard", async (req, res, next) => {
+  try {
+    const response = await nowPlayingMovieList();
+    console.log(response.data);
+    res.json(response.data.results);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get("/billboard/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
     const response = await nowPlayingMovieListId(id);
     // console.log(response.data);
     res.json(response.data);
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.get("/billboard", async (req, res, next) => {
-  try {
-    const response = await nowPlayingMovieList();
-    console.log(response.data);
-    res.json(response.data.results);
   } catch (error) {
     next(error);
   }

@@ -1,8 +1,10 @@
 const router = require("express").Router();
 
 router.get("/", async (req, res, next) => {
+  
   try {
-    return res.send(users);
+    const userParams = await res.send(users)
+    return userParams
   } catch (error) {
     next(err);
   }
