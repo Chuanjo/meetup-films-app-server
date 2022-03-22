@@ -34,7 +34,7 @@ router.post("/", isAuthenticated, async (req, res, next) => {
   
   const { title, city, description, movie, type } = req.body;
   const { _id } = req.payload;
-  const { participant } = req.params;
+  const { attendees } = req.params;
 
 
   try {
@@ -45,7 +45,7 @@ router.post("/", isAuthenticated, async (req, res, next) => {
       creator: _id,
       movie: movie._id,
       type,
-      participant
+      attendees
     });
 
     res.json(response);

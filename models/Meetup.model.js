@@ -20,7 +20,7 @@ const meetUpSchema = new Schema({
       required: true,
     },
   ],
-  participants: [
+  attendees: [
     {
       type: Schema.Types.ObjectId,
       ref: "User",
