@@ -33,8 +33,8 @@ router.post('/signin', async (req, res, next) => {
       res.status(400).json({ errorMessage: "Email is already registered"})
     }
   
-    const userNameUser = await UserModel.findOne({ username })
-    if(userNameUser) {
+    const usernameUser = await UserModel.findOne({ username })
+    if(usernameUser) {
       res.status(400).json({errorMessage: "Username is not valid"})
     }
   
