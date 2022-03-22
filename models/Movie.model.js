@@ -2,10 +2,10 @@ const { Schema, model } = require("mongoose");
 
 const movieSchema = new Schema(
   {
-    movieId: String,
+    movie: String,
     title: String,
     
-    userId: {
+    user: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },

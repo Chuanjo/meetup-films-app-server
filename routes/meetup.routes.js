@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const MeetupModel = require("../models/Meetup.model");
+const isAuthenticated = require("../middleware/isAuthenticated")
 
 // MeetUp Routes
 
@@ -31,10 +32,10 @@ router.get("/", isAuthenticated, async (req, res, next) => {
 
 router.post("/", isAuthenticated, async (req, res, next) => {
   
-  const { title, city, description } = req.body;
+  const { title, city, description, movie, type } = req.body;
   const { _id } = req.payload;
   const { participant } = req.params;
-  const { movie } = req.params;
+//   const { movie } = req.params;
 
   try {
     const response = await MeetupModel.create({
@@ -42,6 +43,8 @@ router.post("/", isAuthenticated, async (req, res, next) => {
       city,
       description,
       creator: _id,
+      movie: movie._id,
+      type,
     });
 
     res.json(response);
@@ -51,15 +54,6 @@ router.post("/", isAuthenticated, async (req, res, next) => {
 });
 
 //MeetUp edit
-
-router.get("/:id/edit", isAuthenticated, async (req, res, next) => {
-  try {
-    const meetUpEdit = await MeetupModel.findById({ creator: _id });
-    res.json(meetUpEdit);
-  } catch (err) {
-    next(err);
-  }
-});
 
 router.patch("/:id/edit", isAuthenticated, async (req, res, next) => {
   const { _id } = req.payload;
@@ -78,4 +72,5 @@ router.patch("/:id/edit", isAuthenticated, async (req, res, next) => {
     next(err);
   }
 }),
-  (module.exports = router);
+
+module.exports = router

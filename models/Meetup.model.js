@@ -6,7 +6,7 @@ const meetUpSchema = new Schema({
   description: String,
   creator: {
     type: Schema.Types.ObjectId,
-    ref: "Username",
+    ref: "User",
   },
   date: Date,
   movie: {
@@ -28,6 +28,6 @@ const meetUpSchema = new Schema({
   ],
 });
 
-const MeetUpModel = model("User", meetUpSchema);
+const MeetUpModel = model("MeetUp", meetUpSchema);
 
 module.exports = MeetUpModel;
