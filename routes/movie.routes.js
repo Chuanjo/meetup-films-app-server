@@ -17,6 +17,15 @@ router.get("/billboard", async (req, res, next) => {
     next(error);
   }
 });
+router.get("/billboardAllData", async (req, res, next) => {
+  try {
+    const response = await nowPlayingMovieList();
+    // console.log(response.data);
+    res.json(response.data);
+  } catch (error) {
+    next(error);
+  }
+});
 
 router.get("/movieDetails/:id", async (req, res, next) => {
   const { id } = req.params;
