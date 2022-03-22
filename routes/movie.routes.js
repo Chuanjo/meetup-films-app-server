@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const MovieModel = require("../models/Movie.model");
+const isAuthenticated = require("../middleware/isAuthenticated")
+
 const {
   
   nowPlayingMovieList,
@@ -11,7 +13,7 @@ const {
 router.get("/billboard", async (req, res, next) => {
   try {
     const response = await nowPlayingMovieList();
-    console.log(response.data);
+    // console.log(response.data);
     res.json(response.data.results);
   } catch (error) {
     next(error);

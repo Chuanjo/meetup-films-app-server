@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const MeetupModel = require("../models/Meetup.model");
+const isAuthenticated = require("../middleware/isAuthenticated")
 
 // MeetUp Routes
 

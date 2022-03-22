@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const CommentModel = require("../models/Comment.model");
+const isAuthenticated = require("../middleware/isAuthenticated")
 
 // Comment Routes
 
