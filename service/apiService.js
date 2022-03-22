@@ -14,11 +14,12 @@ const nowPlayingMovieList = async () => {
   return  res;
 };
 
-const nowPlayingMovieListId = async (id) => {
-  const res = await service.get("/movie/now_playing", {
+const movieDetailsId = async (id) => {
+  console.log(id);
+  const res = await service.get(`/movie/${id}`, {
     params: {
       api_key: process.env.API_KEY,
-      id,
+     
     },
   });
   return  res;
@@ -47,7 +48,7 @@ const popularMovieListId = async (id) => {
 
 module.exports = {
   nowPlayingMovieList,
-  nowPlayingMovieListId,
+  movieDetailsId,
   popularMovieList,
   popularMovieListId,
 };

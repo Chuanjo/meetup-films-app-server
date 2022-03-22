@@ -15,7 +15,7 @@ const movieRoutes = require("./movie.routes")
 router.use("/movie", movieRoutes)
 
 const meetupRoutes = require("./meetup.routes")
-router.use("/meetup", meetupRoutes)
+router.use("/meetup",isAuthenticated, meetupRoutes)
 
 const commentRoutes = require("./comment.routes")
 router.use("/comment", isAuthenticated, commentRoutes)
