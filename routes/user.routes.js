@@ -21,8 +21,8 @@ router.get("/", isAuthenticated, async (req, res, next) => {
     next(err);
   }
 });
-router.get("/:id", async (req, res, next) => {
-  const { id } = req.params;
+router.get("/:id", isAuthenticated, async (req, res, next) => {
+  const { _id } = req.payloads;
 
   try {
     const user = await UserModel.findById(id)
@@ -32,11 +32,11 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.patch("/:id/edit", async (req, res, next) => {
-  const { id } = req.params;
+router.patch("/:id/edit", isAuthenticated, async (req, res, next) => {
+  const { _id } = req.payload
   const { username, city, nickname, email } = req.body
   try {
-    const user = await UserModel.findByIdAndUpdate(id, { username, city, nickname, email })
+    const user = await UserModel.findByIdAndUpdate(_id, { username, city, nickname, email })
     return res.json(user);
   } catch (error) {
     next(err);

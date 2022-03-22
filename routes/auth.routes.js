@@ -109,7 +109,7 @@ router.post("/login", async (req, res, next) => {
   }
 })
 
-//todo/ check user valid Token
+//todo/ check user valid Token and send (req.payload) user info -- info created on line 91
 router.get("/verify", isAuthenticated, (req, res, next) => {
 
   res.status(200).json(req.payload)

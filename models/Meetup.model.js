@@ -6,7 +6,7 @@ const meetUpSchema = new Schema({
   description: String,
   creator: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Username",
   },
   date: Date,
   movie: {
