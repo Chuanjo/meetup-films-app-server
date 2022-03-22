@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const isAuthenticated = require("../middleware/isAuthenticated")
 const MovieModel = require("../models/Movie.model");
+const isAuthenticated = require("../middleware/isAuthenticated")
+
 const {
   
   nowPlayingMovieList,

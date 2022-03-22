@@ -1,6 +1,6 @@
 const router = require("express").Router();
+const UserModel = require("../models/User.model")
 const isAuthenticated = require("../middleware/isAuthenticated")
-const UserModel = require("../models/User.model") 
 
 // router.get("/", async (req, res, next) => {
   
