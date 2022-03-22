@@ -4,7 +4,9 @@ const CommentModel = require("../models/Comment.model");
 
 // Comment Routes
 
-router.get("/", async (req, res, next) => {
+
+
+router.get("/comments", async (req, res, next) => {
   const { _id } = req.params;
   try {
     const response = await CommentModel.find(_id);
@@ -14,17 +16,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/", async (req, res, next) => {
-  const { _id } = req.params;
-  try {
-    const response = await CommentModel.find(_id);
-    res.json(response);
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.post("/", async (req, res, next) => {
+router.post("/comments/create", async (req, res, next) => {
   const { text, movieId, userId } = req.body;
 
   try {

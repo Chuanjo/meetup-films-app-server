@@ -1,11 +1,9 @@
 const router = require("express").Router();
-const isAuthenticated = require("../middleware/isAuthenticated")
-const MovieModel = require("../models/Movie.model");
 
 const {
   
   nowPlayingMovieList,
-  nowPlayingMovieListId,
+  movieDetailsId,
   popularMovieList,
   popularMovieListId,
 } = require("../service/apiService");
@@ -19,12 +17,9 @@ router.get("/billboard", async (req, res, next) => {
     next(error);
   }
 });
-
-router.get("/billboard/:id", async (req, res, next) => {
-  const { id } = req.params;
+router.get("/billboardAllData", async (req, res, next) => {
   try {
-    const response = await nowPlayingMovieListId(id);
-   // probar populate
+    const response = await nowPlayingMovieList();
     // console.log(response.data);
     res.json(response.data);
   } catch (error) {
@@ -32,9 +27,11 @@ router.get("/billboard/:id", async (req, res, next) => {
   }
 });
 
-router.get("/", async (req, res, next) => {
+router.get("/movieDetails/:id", async (req, res, next) => {
+  const { id } = req.params;
   try {
-    const response = await popularMovieList();
+    const response = await movieDetailsId(id);
+   // probar populate
     console.log(response.data);
     res.json(response.data);
   } catch (error) {
@@ -42,11 +39,21 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/popular", async (req, res, next) => {
+  try {
+    const response = await popularMovieList();
+    // console.log(response.data);
+    res.json(response.data.results);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/popular/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
     const response = await popularMovieListId(id);
-    console.log(response.data.results);
+    // console.log(response.data.results);
     res.json(response.data.results);
   } catch (err) {
     next(err);
