@@ -1,10 +1,6 @@
 const router = require("express").Router();
 const isAuthenticated = require("../middleware/isAuthenticated")
 const MovieModel = require("../models/Movie.model");
-<<<<<<< HEAD
-
-=======
->>>>>>> 0abf77288d48f99d7a2d75220eb09f9c11fa797c
 
 const {
   
