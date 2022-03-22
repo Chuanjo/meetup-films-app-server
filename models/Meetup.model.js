@@ -4,7 +4,7 @@ const meetUpSchema = new Schema({
   title: String,
   city: String,
   description: String,
-  userId: {
+  mainUserId: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },
@@ -20,7 +20,7 @@ const meetUpSchema = new Schema({
       required: true,
     },
   ],
-  userJoinerId: [
+  userId: [
     {
       type: Schema.Types.ObjectId,
       ref: "User",
