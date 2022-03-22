@@ -35,7 +35,7 @@ router.post("/", isAuthenticated, async (req, res, next) => {
   const { title, city, description, movie, type } = req.body;
   const { _id } = req.payload;
   const { participant } = req.params;
-//   const { movie } = req.params;
+
 
   try {
     const response = await MeetupModel.create({
@@ -45,6 +45,7 @@ router.post("/", isAuthenticated, async (req, res, next) => {
       creator: _id,
       movie: movie._id,
       type,
+      participant
     });
 
     res.json(response);

@@ -23,6 +23,7 @@ router.get("/billboard/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
     const response = await nowPlayingMovieListId(id);
+   // probar populate
     // console.log(response.data);
     res.json(response.data);
   } catch (error) {
