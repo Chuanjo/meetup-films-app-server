@@ -5,7 +5,7 @@ const isAuthenticated = require("../middleware/isAuthenticated")
 // MeetUp Routes
 
 // MeetUpList route -- all meetUps
-router.get("/meetUpList", isAuthenticated, async (req, res, next) => {
+router.get("/allMeetUp", async (req, res, next) => {
   try {
     const response = await MeetupModel.find();
     res.json(response);
@@ -33,8 +33,8 @@ router.get("/meetUpList/:id", isAuthenticated, async (req, res, next) => {
 router.post("/newMeetUp", isAuthenticated, async (req, res, next) => {
   
   const { title, city, description, movie, type } = req.body;
-  const { _id } = req.payload;
-  const { attendees } = req.params;
+  // const { _id } = req.payload;
+  // const { attendees } = req.params;
 
 
   try {
@@ -42,10 +42,10 @@ router.post("/newMeetUp", isAuthenticated, async (req, res, next) => {
       title,
       city,
       description,
-      creator: _id,
+      creator: req.payload._id,
       movie: movie._id,
       type,
-      attendees
+      // attendees,
     });
 
     res.json(response);
