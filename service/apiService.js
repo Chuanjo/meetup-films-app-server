@@ -13,6 +13,10 @@ const nowPlayingMovieList = async () => {
   });
   return res;
 };
+const searchMovie = async (text) => {
+  const res = await service.get(`/search/movie?api_key=${process.env.API_KEY}&query=/${text}/`);
+  return res;
+};
 
 // we need to pass :id inside the route. doesn't works in params. API uses.
 // by the w<ay we can use this route for all details. Api has different routes to take info

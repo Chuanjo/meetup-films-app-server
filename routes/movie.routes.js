@@ -60,5 +60,16 @@ router.get("/popular/:id", async (req, res, next) => {
   }
 });
 
+router.get("/searchMovie/:text", async (req, res, next) => {
+  
+  try {
+    const response = await searchMovieService(text);
+    // console.log(response.data.results);
+    res.json(response.data.results);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
 
