@@ -8,7 +8,6 @@ const meetUpSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  date: Date,
   movie: {
     type: Schema.Types.ObjectId,
     ref: "Movie",

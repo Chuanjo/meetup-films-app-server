@@ -33,9 +33,11 @@ router.get("/meetUpList/:id", isAuthenticated, async (req, res, next) => {
 router.post("/newMeetUp", isAuthenticated, async (req, res, next) => {
   
   const { title, city, description, movie, type } = req.body;
+  console.log(req.body);
   // const { _id } = req.payload;
   // const { attendees } = req.params;
 
+  // si reciben la peli, la agregan, si no pues no
 
   try {
     const response = await MeetupModel.create({
@@ -43,7 +45,7 @@ router.post("/newMeetUp", isAuthenticated, async (req, res, next) => {
       city,
       description,
       creator: req.payload._id,
-      movie: movie._id,
+      // movie
       type,
       // attendees,
     });
