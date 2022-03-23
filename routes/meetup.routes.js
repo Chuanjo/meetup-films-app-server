@@ -5,7 +5,7 @@ const isAuthenticated = require("../middleware/isAuthenticated")
 // MeetUp Routes
 
 // MeetUpList route -- all meetUps
-router.get("/meetUpList", async (req, res, next) => {
+router.get("/meetUpList", isAuthenticated, async (req, res, next) => {
   try {
     const response = await MeetupModel.find();
     res.json(response);
