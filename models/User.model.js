@@ -13,6 +13,7 @@ const userSchema = new Schema(
     password: String,
     nickName: String,
     city: String,
+    image: String,
   },
   {
     timestamps: true,

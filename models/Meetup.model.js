@@ -8,10 +8,7 @@ const meetUpSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  movie: {
-    type: Schema.Types.ObjectId,
-    ref: "Movie",
-  },
+  movie: String,
   type: [
     {
       type: String,
