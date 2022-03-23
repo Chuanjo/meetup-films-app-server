@@ -18,7 +18,7 @@ router.get("/", async (req, res, next) => {
 // const { _id } = req.payload;
 // MeetupModel.find({creator: _id})
 
-router.get("/", isAuthenticated, async (req, res, next) => {
+router.get("/meetUpList", isAuthenticated, async (req, res, next) => {
   const { _id } = req.payload;
   try {
     const response = await MeetupModel.find({ creator: _id });
@@ -30,7 +30,7 @@ router.get("/", isAuthenticated, async (req, res, next) => {
 
 //MeetUp Create
 
-router.post("/", isAuthenticated, async (req, res, next) => {
+router.post("/newMeetUp", isAuthenticated, async (req, res, next) => {
   
   const { title, city, description, movie, type } = req.body;
   const { _id } = req.payload;

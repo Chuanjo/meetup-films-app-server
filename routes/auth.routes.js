@@ -86,7 +86,7 @@ router.post("/login", async (req, res, next) => {
       return;
     }
     
-    //Create & Send Token 
+    //Create payload & Send Token. Id use passes to front end by payload. 
   
     const payload = {
       _id: foundUser._id,
