@@ -34,10 +34,7 @@ router.post("/newMeetUp", isAuthenticated, async (req, res, next) => {
   
   const { title, city, description, movie, type } = req.body;
   console.log(req.body);
-  // const { _id } = req.payload;
   // const { attendees } = req.params;
-
-  // si reciben la peli, la agregan, si no pues no
   
   try {
     const response = await MeetupModel.create({
@@ -59,9 +56,9 @@ router.post("/newMeetUp", isAuthenticated, async (req, res, next) => {
 
 //MeetUp edit
 
-router.patch("/:id/edit", isAuthenticated, async (req, res, next) => {
+router.patch("/meetUpList/:id/edit", isAuthenticated, async (req, res, next) => {
   const { _id } = req.payload;
-  const { title, description, city } = req.body;
+  const { title, city, description, movie, type } = req.body;
 
   //indByIdAndUpdate needs 2 parameters
   try {
@@ -69,6 +66,8 @@ router.patch("/:id/edit", isAuthenticated, async (req, res, next) => {
       title,
       description,
       city,
+      movie,
+      type,
     });
 
     res.json(meetUpUpdated);
@@ -76,5 +75,18 @@ router.patch("/:id/edit", isAuthenticated, async (req, res, next) => {
     next(err);
   }
 }),
+
+router.delete("/meetUpList/:id/delete", async (req, res, next) => {
+
+  const { _id } = req.payload;
+
+  try {
+    await TodoModel.findByIdAndDelete(_id)
+    res.json("Meet Up has been deleted")
+  } catch(err) {
+    next(err)
+  }
+})
+
 
 module.exports = router
