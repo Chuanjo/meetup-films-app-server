@@ -6,8 +6,9 @@ const isAuthenticated = require("../middleware/isAuthenticated")
 
 // MeetUpList route -- all meetUps
 router.get("/allMeetUp", async (req, res, next) => {
+  
   try {
-    const response = await MeetupModel.find();
+    const response = await MeetupModel.find().populate("creator")
     res.json(response);
   } catch (err) {
     next(err);
@@ -20,8 +21,21 @@ router.get("/allMeetUp", async (req, res, next) => {
 
 router.get("/meetUpList/:id", isAuthenticated, async (req, res, next) => {
   const { _id } = req.payload;
+  console.log("this is for get the list of meetups")
   try {
     const response = await MeetupModel.find({ creator: _id });
+    console.log(response)
+    res.json(response);
+  } catch (err) {+
+    next(err);
+  }
+});
+
+router.get("/getmeetupbyid/:id", isAuthenticated, async (req, res, next) => {
+  const { id } = req.params;
+  
+  try {
+    const response = await MeetupModel.find({ movie: id });
     res.json(response);
   } catch (err) {
     next(err);

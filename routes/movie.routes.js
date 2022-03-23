@@ -32,7 +32,7 @@ router.get("/movieDetails/:id", async (req, res, next) => {
   try {
     const response = await movieDetailsId(id);
    // probar populate
-    console.log(response.data);
+    // console.log(response.data);
     res.json(response.data);
   } catch (error) {
     next(error);
