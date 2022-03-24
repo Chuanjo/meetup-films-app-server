@@ -19,7 +19,7 @@ router.get("/allMeetUp", async (req, res, next) => {
 // const { _id } = req.payload;
 // MeetupModel.find({creator: _id})
 
-router.get("/meetUpList/:id", isAuthenticated, async (req, res, next) => {
+router.get("/meetUpList", isAuthenticated, async (req, res, next) => {
   const { _id } = req.payload;
   console.log("this is for get the list of meetups")
   try {
