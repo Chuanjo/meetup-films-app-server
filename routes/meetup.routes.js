@@ -26,7 +26,7 @@ router.get("/meetUpList/:id", isAuthenticated, async (req, res, next) => {
     const response = await MeetupModel.find({ creator: _id });
     console.log(response)
     res.json(response);
-  } catch (err) {+
+  } catch (err) {
     next(err);
   }
 });
@@ -47,7 +47,7 @@ router.get("/getmeetupbyid/:id", isAuthenticated, async (req, res, next) => {
 router.post("/newMeetUp", isAuthenticated, async (req, res, next) => {
   
   const { title, city, description, movie, type } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   // const { attendees } = req.params;
   
   try {
