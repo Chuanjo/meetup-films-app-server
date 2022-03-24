@@ -12,7 +12,6 @@ const meetUpSchema = new Schema({
   type: [
     {
       type: String,
-      enum: ["Ir al cine", "Performance Tematica"],
       required: true,
     },
   ],

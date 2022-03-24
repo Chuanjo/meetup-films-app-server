@@ -6,6 +6,7 @@ const {
   movieDetailsId,
   popularMovieList,
   popularMovieListId,
+  searchMovie,
 } = require("../service/apiService");
 
 router.get("/billboard", async (req, res, next) => {
@@ -61,9 +62,9 @@ router.get("/popular/:id", async (req, res, next) => {
 });
 
 router.get("/searchMovie/:text", async (req, res, next) => {
-  
+  const {text} = req.params
   try {
-    const response = await searchMovieService(text);
+    const response = await searchMovie(text);
     // console.log(response.data.results);
     res.json(response.data.results);
   } catch (err) {
