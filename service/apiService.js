@@ -13,6 +13,7 @@ const nowPlayingMovieList = async () => {
   });
   return res;
 };
+
 const searchMovie = async (text) => {
   const res = await service.get(`/search/movie?api_key=${process.env.API_KEY}&query=/${text}/`);
   return res;
@@ -56,5 +57,5 @@ module.exports = {
   nowPlayingMovieList,
   movieDetailsId,
   popularMovieList,
-  
+  searchMovie,
 };
