@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const MeetupModel = require("../models/Meetup.model");
-const isAuthenticated = require("../middleware/isAuthenticated")
+const isAuthenticated = require("../middleware/isAuthenticated");
+const MeetUpModel = require("../models/Meetup.model");
 
 // MeetUp Routes
 
@@ -70,7 +71,7 @@ router.post("/newMeetUp", isAuthenticated, async (req, res, next) => {
 
 //MeetUp edit
 
-router.patch("/meetUpList/:id/edit", isAuthenticated, async (req, res, next) => {
+router.patch("/meetUpList/:id", isAuthenticated, async (req, res, next) => {
   const { _id } = req.payload;
   const { title, city, description, movie, type } = req.body;
 
@@ -90,12 +91,12 @@ router.patch("/meetUpList/:id/edit", isAuthenticated, async (req, res, next) => 
   }
 }),
 
-router.delete("/meetUpList/:id/delete", async (req, res, next) => {
+router.delete("/meetUpList/:id", async (req, res, next) => {
 
-  const { _id } = req.payload;
+  const { id } = req.params;
 
   try {
-    await TodoModel.findByIdAndDelete(_id)
+    await MeetUpModel.findByIdAndDelete(_id)
     res.json("Meet Up has been deleted")
   } catch(err) {
     next(err)

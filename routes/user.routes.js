@@ -33,7 +33,7 @@ router.get("/:id", isAuthenticated, async (req, res, next) => {
   }
 });
 
-router.patch("/:id/edit", isAuthenticated, async (req, res, next) => {
+router.patch("/:id", isAuthenticated, async (req, res, next) => {
   const { _id } = req.payload
   const { username, city, nickname, email } = req.body
   try {
