@@ -40,8 +40,17 @@ router.patch("/:id/edit", isAuthenticated, async (req, res, next) => {
     const user = await UserModel.findByIdAndUpdate(_id, { username, city, nickname, email })
     return res.json(user);
   } catch (error) {
-    next(err);
+    next(error);
   }
 });
+
+router.delete("/:id", isAuthenticated, async (req, res, next) =>{
+  const { id } = req.params
+  try {
+    await UserModel.findByIdAndDelete(id)
+  } catch (error) {
+    next(error)
+  }
+})
 
 module.exports = router;
