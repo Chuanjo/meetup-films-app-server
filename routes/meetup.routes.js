@@ -91,16 +91,16 @@ router.patch("/meetUpList/:id", isAuthenticated, async (req, res, next) => {
   }
 }),
 
-router.delete("/meetUpList/:id", async (req, res, next) => {
-
-  const { id } = req.params;
-
+router.delete("/meetUpList", isAuthenticated, async (req, res, next) => {
+  console.log(req.body.data)
+  const id  = req.body.data
   try {
-    await MeetUpModel.findByIdAndDelete(id)
+    await MeetUpModel.findByIdAndDelete({_id:id})
     res.json("Meet Up has been deleted")
   } catch(err) {
     next(err)
   }
+  
 })
 
 
