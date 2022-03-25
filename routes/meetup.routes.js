@@ -96,7 +96,7 @@ router.delete("/meetUpList/:id", async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    await MeetUpModel.findByIdAndDelete(_id)
+    await MeetUpModel.findByIdAndDelete(id)
     res.json("Meet Up has been deleted")
   } catch(err) {
     next(err)

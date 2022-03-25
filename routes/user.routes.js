@@ -23,7 +23,7 @@ router.get("/", isAuthenticated, async (req, res, next) => {
   }
 });
 router.get("/:id", isAuthenticated, async (req, res, next) => {
-  const { _id } = req.payloads;
+  const { _id } = req.payload;
 
   try {
     const user = await UserModel.findById(id)
@@ -33,21 +33,21 @@ router.get("/:id", isAuthenticated, async (req, res, next) => {
   }
 });
 
-router.patch("/:id", isAuthenticated, async (req, res, next) => {
+router.patch("/edit", isAuthenticated, async (req, res, next) => {
   const { _id } = req.payload
-  const { username, city, nickname, email } = req.body
+  const { username, email, nickName, city } = req.body
   try {
-    const user = await UserModel.findByIdAndUpdate(_id, { username, city, nickname, email })
-    return res.json(user);
+    const user = await UserModel.findByIdAndUpdate(_id, { username, email, nickName, city })
+    return res.json("User updated");
   } catch (error) {
     next(error);
   }
 });
 
-router.delete("/:id", isAuthenticated, async (req, res, next) =>{
-  const { id } = req.params
+router.delete("/delete", isAuthenticated, async (req, res, next) =>{
+  const { _id } = req.payload
   try {
-    await UserModel.findByIdAndDelete(id)
+    await UserModel.findByIdAndDelete(_id)
   } catch (error) {
     next(error)
   }
